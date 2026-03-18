@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Register - User Management System{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="header">
+        <h1>Create Account</h1>
+        <p>Join us today! Fill in your details below</p>
+    </div>
+    
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        
+        <div class="form-group">
+            {{ form.username.label }}
+            {{ form.username(class="form-control") }}
+            {% for error in form.username.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
+        </div>
+        
+        <div class="form-group">
+            {{ form.email.label }}
+            {{ form.email(class="form-control") }}
+            {% for error in form.email.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
+        </div>
+        
+        <div class="form-group">
+            {{ form.password.label }}
+            {{ form.password(class="form-control") }}
+            {% for error in form.password.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
+        </div>
+        
+        <div class="form-group">
+            {{ form.confirm_password.label }}
+            {{ form.confirm_password(class="form-control") }}
+            {% for error in form.confirm_password.errors %}
+                <span class="error">{{ error }}</span>
+            {% endfor %}
+        </div>
+        
+        {{ form.submit(class="btn") }}
+    </form>
+    
+    <div class="link">
+        <p>Already have an account? <a href="{{ url_for('login') }}">Sign in here</a></p>
+    </div>
+</div>
+{% endblock %}
